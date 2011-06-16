@@ -3,7 +3,7 @@
  *  Base include file for SimpleTest.
  *  @package    SimpleTest
  *  @subpackage WebTester
- *  @version    $Id: web_tester.php 2013 2011-04-29 09:29:45Z pp11 $
+ *  @version    $Id$
  */
 
 /**#@+
@@ -430,7 +430,7 @@ class NoTextExpectation extends TextExpectation {
  *    @package SimpleTest
  *    @subpackage WebTester
  */
-abstract class WebTestCase extends SimpleTestCase {
+class WebTestCase extends SimpleTestCase {
     private $browser;
     private $ignore_errors = false;
 

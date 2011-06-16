@@ -1,5 +1,5 @@
 <?php
-// $Id: reflection_php4_test.php 1505 2007-04-30 23:39:59Z lastcraft $
+// $Id$
 require_once(dirname(__FILE__) . '/../autorun.php');
 
 class AnyOldThing {
