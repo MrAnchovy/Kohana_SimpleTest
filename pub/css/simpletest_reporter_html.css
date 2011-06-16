@@ -1,0 +1,21 @@
+body { font-family: Verdana; font-size: 80%; }
+
+.start { background: #cfcfcf; }
+
+table { border-collapse: collapse; border: 2px solid #cfcfcf; }
+td, th { padding: 2px 4px; border: 1px solid #cfcfcf; }
+
+.porf { text-transform: uppercase; text-align: center; font-size: 60%; }
+
+.pass { color: #7f7f7f; }
+.skip { color: #9f9f9f; }
+
+.pass .porf { color: green; }
+.skip .porf { color: #9f9f9f; }
+.bad .porf { background: red; color: white; font-weight: bold; font-size: 100%; }
+
+.good { }
+.bad { color: red; }
+
+p.assert { margin: 0; }
+p.location { margin: 0; font-size: 80%; }
