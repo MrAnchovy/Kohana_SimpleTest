@@ -13,7 +13,6 @@ class Controller_Simpletest extends Controller {
 public function before() {
   parent::before();
   define('SIMPLETEST_PATH', realpath(dirname(__FILE__).'/../../simpletest').'/');
-  define('SIMPLETEST_TESTS_PATH', Kohana::config('simpletest.tests_path'));
 }
 
 // ACTIONS ----------------------------------------------------------------- */
@@ -39,12 +38,13 @@ public function action_doc() {
 public function action_index() {
 }
 
+protected function get_test_paths() {
+  return Kohana::config('simpletest.tests_path');
+}
+
+
 public function action_run() {
 
-  if ( !file_exists(SIMPLETEST_TESTS_PATH) ) {
-    echo 'The test directory does not exist - you need to create '.SIMPLETEST_TESTS_PATH.' and put a test file in it.';
-    return;
-  }
   require_once(SIMPLETEST_PATH.'autorun.php');
 // in simpletest/web_tester.php - avoids creation of null test case
 // abstract class WebTestCase extends SimpleTestCase {
@@ -60,7 +60,9 @@ public function action_run() {
   $pattern = DIRECTORY_SEPARATOR=='\\'
     ? '#\\\\test_'.$pattern.'.*\.php#'
     : '#\/test_'.$pattern.'.*\.php#';
-  $tests->collect(SIMPLETEST_TESTS_PATH, new SimplePatternCollector($pattern));
+  foreach ( $this->get_test_paths() as $path ) {
+    $tests->collect($path, new SimplePatternCollector($pattern));
+  }
 }
 
 }

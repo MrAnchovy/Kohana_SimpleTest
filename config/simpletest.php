@@ -2,5 +2,5 @@
 
 return array(
   'reporter'    => 'SimpleTest_Reporter_Html',
-  'tests_path'  => APPPATH.'simpletests',
+  'tests_path'  => array('app' => APPPATH.'simpletests'),
 );
