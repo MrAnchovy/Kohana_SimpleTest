@@ -36,6 +36,7 @@ public function action_doc() {
 }
 
 public function action_index() {
+  $this->response->body(View::factory('simpletest_demo'));
 }
 
 protected function get_test_paths() {
