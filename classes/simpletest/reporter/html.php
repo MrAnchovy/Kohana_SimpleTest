@@ -132,7 +132,7 @@ protected function split($message) {
   // get filename
   // $pattern = '@^((.*)\||)((.*) at \[.*\/(.*) line ([0-9]+)\]|)$@si';
   // get file path
-  $pattern = '@^((.*)\||)((.*) (in|at) \[(.*) line ([0-9]+)\]|)$@si';
+  $pattern = '@^((.*)\||)((.*) (in|at) \[(.*) line \[?([0-9]+)\]?\]|)$@si';
   $matches = array();
   $count = preg_match($pattern, $message, $matches);
   if ( $count==0 ) {
