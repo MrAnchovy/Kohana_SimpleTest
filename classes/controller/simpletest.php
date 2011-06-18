@@ -36,7 +36,11 @@ public function action_doc() {
 }
 
 public function action_index() {
-  $this->response->body(View::factory('simpletest_demo'));
+  if ( strpos(Kohana::VERSION, '3.1')===FALSE ) {
+    $this->request->response = View::factory('simpletest_demo');
+  } else {
+    $this->response->body(View::factory('simpletest_demo'));
+  }
 }
 
 protected function get_test_paths() {
