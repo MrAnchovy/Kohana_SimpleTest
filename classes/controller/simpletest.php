@@ -61,7 +61,9 @@ public function action_run() {
     ? '#\\\\test_'.$pattern.'.*\.php#'
     : '#\/test_'.$pattern.'.*\.php#';
   foreach ( $this->get_test_paths() as $path ) {
-    $tests->collect($path, new SimplePatternCollector($pattern));
+    if ( is_dir($path) ) {
+      $tests->collect($path, new SimplePatternCollector($pattern));
+    }
   }
 }
 
