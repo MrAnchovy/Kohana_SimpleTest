@@ -6,7 +6,8 @@
  * @copyright  (c) 2011 Mr Anchovy
  * @license    http://opensource.org/licenses/ISC
  */
-Route::set('simpletest', 'test(/<action>(/<arg>))', array('arg'=>'(.*)'))
+//Route::set('simpletest', 'simpletest(/<action>(/<arg>))', array('arg'=>'(.*)'))
+Route::set('simpletest', 'simpletest(/<action>(/<arg>))')
 	->defaults(array(
 		'controller' => 'simpletest',
 		'action'     => 'index',
