@@ -35,14 +35,14 @@ function test_assert_not_null() {
 
 // assertIsA($x, $t)	Fail unless $x is the class or type $t
 function test_assert_is_a() {
-  $x = new Simpletest_Demo;
-  $this->assertIsA($x, 'Simpletest_Demo', 'Should be a Simpletest_Demo object|%s');
+  $x = new View;
+  $this->assertIsA($x, 'View', 'Should be a View object|%s');
 }
 
 // assertNotA($x, $t)	Fail unless $x is not the class or type $t
 function test_assert_not_a() {
   $x = new stdClass;
-  $this->assertNotA($x, 'Simpletest_Demo', 'Should not be a Simpletest_Demo object|%s');
+  $this->assertNotA($x, 'View', 'Should not be a View object|%s');
 }
 
 // assertEqual($x, $y)	Fail unless $x == $y is true
