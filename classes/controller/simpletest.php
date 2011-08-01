@@ -44,7 +44,7 @@ public function action_index() {
 }
 
 protected function get_test_paths() {
-  return Kohana::config('simpletest.tests_path');
+  return Kohana::$config->load('simpletest.tests_path');
 }
 
 
@@ -55,7 +55,7 @@ public function action_run() {
 // abstract class WebTestCase extends SimpleTestCase {
   require_once(SIMPLETEST_PATH.'web_tester.php');
 
-  if ( $reporter = Kohana::config('simpletest.reporter') ) {
+  if ( $reporter = Kohana::$config->load('simpletest.reporter') ) {
     SimpleTest::prefer(new $reporter);
   }
 
