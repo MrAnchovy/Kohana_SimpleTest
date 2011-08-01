@@ -8,11 +8,21 @@
  */
 class Controller_Simpletest extends Controller {
 
+/**
+ * Config loaded here in before();
+ */
+protected $config;
+
 // BEFORE ------------------------------------------------------------------ */
 
 public function before() {
   parent::before();
   define('SIMPLETEST_PATH', realpath(dirname(__FILE__).'/../../simpletest').'/');
+  if ( Kohana::VERSION > '3.2' ) {
+    $this->config = Kohana::$config->load('simpletest');
+  } else {
+    $this->config = Kohana::config('simpletest');
+  }
 }
 
 // ACTIONS ----------------------------------------------------------------- */
@@ -36,15 +46,15 @@ public function action_doc() {
 }
 
 public function action_index() {
-  if ( strpos(Kohana::VERSION, '3.1')===FALSE ) {
-    $this->request->response = View::factory('simpletest_demo');
-  } else {
+  if ( Kohana::VERSION > '3.1' ) {
     $this->response->body(View::factory('simpletest_demo'));
+  } else {
+    $this->request->response = View::factory('simpletest_demo');
   }
 }
 
 protected function get_test_paths() {
-  return Kohana::config('simpletest.tests_path');
+  return Arr::get($this->config, 'tests_path');
 }
 
 
@@ -55,7 +65,7 @@ public function action_run() {
 // abstract class WebTestCase extends SimpleTestCase {
   require_once(SIMPLETEST_PATH.'web_tester.php');
 
-  if ( $reporter = Kohana::config('simpletest.reporter') ) {
+  if ( $reporter = Arr::get($this->config, 'reporter') ) {
     SimpleTest::prefer(new $reporter);
   }
 

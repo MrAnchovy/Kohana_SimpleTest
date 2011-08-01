@@ -3,7 +3,7 @@
 This is a module for the [Kohana PHP framework](http://kohanaphp.com/) that
 integrates [SimpleTest](http://www.simpletest.org/).
 
-Release 0.1.1 for Kohana 3
+Release 0.2.1 for Kohana 3 (including 3.1 and 3.2)
 
 ### Quick Start
 
