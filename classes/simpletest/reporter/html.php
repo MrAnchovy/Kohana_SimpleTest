@@ -14,7 +14,8 @@ class SimpleTest_Reporter_Html extends HtmlReporter {
  * is called once at the very start of the test when the first start event arrives. The first start event is usually delivered by the top level group test and so this is where $test_name comes from. It paints the page title, CSS, body tag, etc. It returns nothing (void).
 */
 function paintHeader($test_name) {
-  parent::paintHeader($test_name);
+  // $test_name is always index.php so let's use something better
+  parent::paintHeader(__('Tests run against Kohana :kohanav on PHP :phpv', array(':kohanav' => Kohana::VERSION, ':phpv' => phpversion())));
 ?>
 <table style="border-collapse: collapse;">
 <tr class="head">
@@ -28,7 +29,8 @@ function paintHeader($test_name) {
 
 
 function paintCaseStart($test_name) {
-  SimpleReporter::paintCaseStart($test_name);
+//  SimpleReporter::paintCaseStart($test_name);
+  parent::paintCaseStart($test_name);
 ?>
 <tr class="start case"><td colspan="4"><?php echo "Class: $test_name"; ?></td></tr>
 <?php
@@ -108,7 +110,9 @@ void paintFooter(string $test_name)
 Called at the very end of the test to close any tags opened by the page header. By default it also displays the red/green bar and the final count of results. Actually the end of the test happens when a test end event comes in with the same name as the one that started it all at the same level. The tests nest you see. Closing the last test finishes the display.
 */
 function paintFooter($test_name) {
-  echo "</table>\n";
+?>
+</table>
+<?php
   parent::paintFooter($test_name);
 }
 
