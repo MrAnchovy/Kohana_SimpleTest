@@ -17,7 +17,8 @@ protected $config;
 
 public function before() {
   parent::before();
-  define('SIMPLETEST_PATH', realpath(dirname(__FILE__).'/../../simpletest').'/');
+  // define('SIMPLETEST_PATH', realpath(dirname(__FILE__).'/../../vendor/simpletest').'/');
+  define('SIMPLETEST_PATH', realpath(dirname(__FILE__).'/../../vendor/simpletest').'/');
   if ( Kohana::VERSION > '3.2' ) {
     $this->config = Kohana::$config->load('simpletest');
   } else {
